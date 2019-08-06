@@ -1,0 +1,785 @@
+html  {
+ box-sizing:border-box;
+ }
+
+ *, *:before, *:after {
+     box-sizing: inherit;
+ }
+
+ img {
+     max-width: 100%;
+ }
+
+body {
+	background: #FEFDFC;
+	font-family: Arial, san-serif;
+	letter-spacing: 0.09em;
+}
+
+table {
+	table-layout: fixed;
+	overflow: auto;
+	padding: 10px;
+	margin: 30px;
+}
+
+td {
+	word-wrap: break-word;
+}
+
+.thSection {
+	/*display: flex;*/
+	flex-direction: row;
+	padding-bottom: 14px;
+	text-align: left;
+}
+
+tr.searchRows td {
+	border-bottom: .5px solid #CCCACA;
+	text-align: left;
+}
+
+tr.searchRows th {
+	text-align: left;
+	display: inline-block;
+	padding-top: 19.75px;
+	padding-bottom: 14px;
+}
+
+.fields {
+	font-style: normal;
+	font-weight: bold;
+	line-height: 15px;
+	font-size: 15px;
+	text-transform: capitalize;
+	color: #28536B;
+	white-space: nowrap;
+    width: 100%;
+}
+
+.tableContainer {
+	background-color: #FEFDFC;
+	padding: 26px;
+	padding-top: 19.75px;
+	background: #FEFDFC;
+	/* Primary */
+	border: 0.25px solid #2C3D55;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+	border-radius: 3px;
+	margin: 0 14px;
+	position: relative;
+	z-index: 2;
+}
+
+.containerHead {
+    font-family: "Times New Roman";
+	display: flex;
+	justify-content: space-between;
+	background: #2C3D55;
+	color: #FFFFFF;
+	padding: 13px 18px;
+    font-size: 22px;
+    color: #FFFFFF;
+}
+
+.mainTitle {
+    width: 97%;
+    margin: 30px auto;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 32px;
+    color: #2C3D55;
+}
+
+.mainTitle h3 {
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 32px;
+	letter-spacing: 0.01em;
+	color: #2C3D55;
+	margin-left: 20px;
+}
+
+.mainDescription {
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: #2C3D55;
+    margin: 18px;
+    font-family: "Times New Roman";
+}
+
+.mainDescription span {
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.memberLinks{
+    margin-right: 100px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+
+ul.memberLinks li {
+    display: inline-block;
+    margin-left: 35px;
+}
+
+hr {
+    background: #2C3D55;
+    border: 2px solid #CDCDCD;
+}
+
+.btn {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+    width: 30%;
+    font-style: normal;
+    line-height: normal;
+    font-size: 22px;
+    text-align: center;
+    color: #28536B;
+    padding-bottom: 52px;
+    box-sizing:border-box;
+}
+
+.btn:hover {
+    cursor: pointer;
+    /* border: 1px solid #2C3D55;
+    border: 1px solid #FFFFFF; */
+}
+
+.buttonsContainer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1080px;
+    width: 100%;
+}
+
+.buttonsContainer img {
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+
+.menuContainer {
+   background: #F2F3F4;
+   color: #333333;
+   margin-top: 35px;
+   padding: 35px;
+   height: 100%;
+   z-index: 500;
+   float: left;
+   padding: 35px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+.menuContainer hr {
+ border: 2px solid #2C3D55;
+}
+
+.menuContainer h3 {
+ font-size: 24px;
+}
+
+.menuContainer p {
+ font-size: 16px;
+ line-spacing: 0.01em;
+ line-height: 22px;
+}
+
+.memberUpdateBox {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 75px;
+}
+
+.searchMembers, .sensitiveClaims {
+    width: 550px;
+}
+
+@media (min-width: 1400px){
+   .searchMembers, .sensitiveClaims {
+       width: 850px;
+   }
+}
+
+.searchMembers {
+    margin-right: 32px;
+}
+
+.searchMembers a {
+     color: #2C3D55;
+     cursor: pointer;
+ }
+
+.sensitiveClaims {
+    margin-right: 12px;
+}
+
+.memberSearchBtn, .viewClaimsBtn {
+    background: #E03633;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    height: 36px;
+    width: 158px;
+    color: white;
+    float: right;
+}
+
+.memberSearchBtn {
+    margin-top: 20px;
+}
+
+.viewClaimsBtn {
+   margin-top: 60px;
+}
+
+.searchBarContent {
+    background: #F2F3F4;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin: 0 14px;
+    padding-bottom: 5px;
+    height: 120px;
+    position: relative;
+    z-index: 5;
+}
+
+.searchBar {
+    display: inline-flex;
+    background: #FFFFFF;
+    /* Primary */
+    border: 0.25px solid #2C3D55;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
+    border-radius: 3px;
+    margin: 15px;
+}
+
+.sensitiveAccountsBtn {
+    border: 1px solid #E03633;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    background: #FEFDFC;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    color: #E03633;
+    width: 213px;
+    height: 36px;
+}
+
+.addButton {
+	width: 133px;
+	height: 36px;
+	/* Secondary */
+	background: #E03633;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	color: #FFFFFF;
+	float: right;
+	margin: 15px;
+}
+
+.searchID {
+    /*width: 100%;    This was messing up name changes page */
+    height: 36px;
+    /* Secondary */
+    background: #E03633;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    color: #FFFFFF;
+    margin: 15px;
+}
+
+.editButtonSplit {
+	background-color: white;
+	border: none;
+	color: white;
+	/*padding: 5px 15px;*/
+	/*box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);*/
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 13px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+/* The Modal (background) */
+.modalBox {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 15; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-Box {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  max-width: 650px;
+}
+
+/* Smaller screens modal box column */
+@media (max-width: 920px){
+    .formWrapper td {
+    display: flex;
+    flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 580px){
+    .formWrapper td input {
+        width: 100%;
+    }
+}
+
+.formWrapper {
+    padding: 20px;
+}
+
+.formWrapper td {
+  padding: 15px;
+}
+
+.formHeader {
+	margin-top: 0px;
+	padding-top: 0px;
+	padding: 16.75px;
+	background: #2C3D55;
+	box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.05);
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 14px;
+	letter-spacing: 0.09em;
+	text-align: center;
+	color: #FFFFFF;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.formTitle {
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 16px;
+	color: #333333;
+	margin-bottom: 15px;
+}
+
+/* Add styles to the form container */
+.form-container {
+	background-color: #FEFDFC;
+	margin: 0;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+	border: none;
+	cursor: pointer;
+	background: #28536B;
+	width: 65px;
+	height: 26px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	color: #FFFFFF;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+	background-color: #FFFFFF;
+	color: #28536B;
+	padding: 5px;
+	border-radius: 3px;
+}
+
+ Add some hover effects to buttons
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.hide {
+	opacity: 0;
+}
+
+.reveal {
+	opacity: 1;
+}
+
+.collapse {
+	visibility: collapse;
+}
+
+.editButtonSplit {
+	background-color: #28536B;
+	border: none;
+	color: white;
+	/*padding: 5px 15px;*/
+	/*box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);*/
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 13px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+.ellipseBtn {
+	z-index: 10;
+	-webkit-transition: opacity .5s; /* Safari */
+	transition: opacity .5s;
+	background-color: white;
+	right: 50px;
+}
+
+#ellipseButtonInTable {
+	background-color: white;
+}
+
+.animateToRight {
+	-webkit-transform: translate(25px); /* Safari */
+	transform: translate(-10px);
+}
+
+.animateToLeft {
+	-webkit-transform: translate(-10px); /* Safari */
+	transform: translate(-10px);
+}
+
+.deleteButtonInTable, .editButtonInTable {
+	-webkit-transition: -webkit-transform .5s; /* Safari */
+	transition: transform .5s;
+}
+
+.deleteButtonInTable {
+    background-color: #FFFFFF;
+    color: #28536B;
+    border: 1px solid #28536B;
+}
+
+@media (max-width: 500px) {
+    .fields {font-size: 12px;}
+    .btn {font-size: 14px;}
+    .mainDescription {font-size:14px;}
+    .mainTitle h3 {font-size: 14px;}
+    .containerHead{font-size: 14px;}
+    .memberLinks{font-size: 14px;}
+ }
+
+ .formBtn {
+  background: #28536B;
+  color: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  width: 65px;
+  padding: 5px;
+ }
+
+.form-container span input{
+  padding: 0px 5px;
+}
+
+/*START OF NEW SEARCH BAR/FILTERING CSS */
+.searchBarInput {
+    background: #FFFFFF;
+    border: 0;
+    height: 30px;
+    width: 200px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.searchBarInput:focus {
+    outline:none;
+}
+
+.filterContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    margin-left: 15px;
+}
+
+.filterSearch {
+    background: #FFFFFF;
+    color: #333333;
+    /* Primary */
+    font-family: Arial, san-serif;
+    cursor: pointer;
+    border: 0.5px solid #828282;
+    box-sizing: border-box;
+    border-radius: 2px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 36px;
+    width: 120px;
+    padding: 8px 0px 10px 10px;
+}
+
+.brandFilterSearch {
+    background: #FFFFFF;
+    /* Primary */
+    font-family: Arial, san-serif;
+    cursor: pointer;
+    border: 0.5px solid #828282;
+    border-right: 0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 36px;
+    width: 120px;
+    padding: 8px 0px 10px 10px;
+}
+
+.magnifyingGlass {
+    background: #FFFFFF;
+    border: none;
+}
+
+.magnifyingGlass:hover {
+    cursor: pointer;
+}
+/*END OF NEW SEARCH BAR/FILTERING CSS */
+
+/*PAGINATION STYLING*/
+.pagination{
+    margin-top: 10px;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0px 3px;
+    padding: 2px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #28536B;
+}
+
+li.active a, li.active a:visited {
+    color: white;
+}
+
+li.active {
+    background-color: #28536B;
+}
+
+.hide {
+    display: none;
+}
+
+/*Upload File button */
+.fileBtn {
+	width: 133px;
+	height: 36px;
+	/* Secondary */
+	background: #E03633;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	color: #FFFFFF;
+	float: right;
+	margin: 15px 15px 15px 0;
+}
+
+/* Smaller screens modal box column */
+@media (max-width: 920px){
+    .formWrapper td {
+    display: flex;
+    flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 580px){
+    .formWrapper td input {
+        width: 100%;
+    }
+}
+
+.formWrapper {
+    padding: 20px;
+}
+
+.formWrapper td {
+  padding: 15px;
+}
+
+/* Add some hover effects to buttons */
+.form-container2 .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.chooseFileBtn {
+    text-align: center;
+    padding: 20px 3px;
+}
+
+#fileError {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+.resetBtn {
+    width: 133px;
+	height: 36px;
+	/* Secondary */
+	background: #E03633;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	color: #FFFFFF;
+	margin-top: auto;
+}
+
+.loginForm {
+  text-align: center;
+  margin: 45px;
+}
+
+.lgnBtn {
+  margin: 10px 30px 34px 78px;
+}
+
+#errorMessage {
+ margin: 100px 450px;
+}
+
+#errorBtn {
+    background: #E03633;
+ 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+ 	border-radius: 3px;
+ 	color: #FFFFFF;
+ 	margin: 0px 80px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.tableTitles {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     margin: 5px 5px 5px 140px;
+}
+
+.tableTitles p {
+    margin: 5px;
+}
+
+.modalButtons {
+    margin: 20px;
+}
+
+#userrecords tr{
+    padding: 5px;
+}
+
+#userrecords thead tr th{
+    font-style: normal;
+    font-weight: bold;
+    line-height: 15px;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: #28536B;
+    white-space: nowrap;
+    width: 2%;
+    flex-direction: row;
+    padding-bottom: 14px;
+    text-align: left;
+}
+
+#userrecords td {
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+#tandcform{
+    margin: 20px;
+}
+
+.submitBtn {
+    background-color: #FFFFFF;
+    color: #28536B;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#searchText {
+    cursor: pointer;
+}
+
+#resetBtn {
+    cursor: pointer;
+}
+
+#retrieveBtn {
+    cursor: pointer;
+}
+
+#nameChangesTable th,td{
+    padding: 5px;
+}
+
+#mvpLinks {
+    margin: 10px;
+}
+
+#rcLinks {
+    margin: 20px;
+}
+
+#vaTool {
+    width: 500px;
+}
+
+#sensitiveClaims {
+    width: 500px;
+}
+
+
+.buttonLink a:link {
+  color: blue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.buttonLink a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#resetButton {
+    margin-top: 15px;
+}
