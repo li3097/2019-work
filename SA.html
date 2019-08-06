@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var ctxroot = /*[[@{/}]]*/ '/';
+        var ctxrootrest = /*[[@{/rest/}]]*/ '/';
+        /*]]>*/
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/sensitiveaccounts.css" th:href="@{/css/sensitiveaccounts.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            th:src="@{//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            th:src="@{//code.jquery.com/ui/1.12.1/jquery-ui.min.js}"></script>
+    <script src="../static/scripts/spendingaccounts.js"
+            th:src="@{/scripts/spendingaccounts.js}"></script>
+    <script src="../static/scripts/buttonSplit.js"
+            th:src="@{/scripts/buttonSplit.js}"></script>
+    <script src="../static/scripts/sensitiveaccounts.js"  th:src="@{/scripts/sensitiveaccounts.js}"></script>
+    <title>Sensitive Accounts</title>
+</head>
+
+<body>
+
+<div class="containerHead" th:replace="fragments/header :: nav-header(headTitle='Consumer Admin Console', showLinks='true')"></div>
+<div class="mainDescription" th:replace="fragments/header :: main-description(subTitle='SENSITIVE ACCOUNTS', mainDescription='Select a member to make changes to thier account')"></div>
+
+<div class="searchBarContent" id="sensitiveAccountsMainPage">
+    <form>
+        <span class="searchBar">
+            <input class="searchBarInput" name="searchText" id="searchText" type="text" maxlength="12" placeholder="Member Id">
+            <button type="submit" class="magnifyingGlass" onClick="sensitiveAccountsSearchBy()" th:onclick="|sensitiveAccountsSearchBy()|"><img th:src="@{/images/MagnifyingGlass.png}"></button>
+            <button type="button" class="resetBtn" onClick="resetFilters()" th:onclick="|resetFilters()|">RESET</button>
+        </span>
+        <button type="button" class="addButton" onclick="openNewAccount()" th:onclick="|openNewAccount()|">ADD NEW</button>
+    </form>
+</div>
+
+<div class="headerLine" id="sensitiveAccountsData">
+    <table width="100%" class="searchTable">
+        <tr class="searchTableBorder">
+            <th width="15%">
+                <div class="fields thSection">
+                    <span> Member ID </span>
+                </div>
+            </th>
+            <th width="15%">
+                <div class="fields thSection">
+                    <span> First Name </span>
+                </div>
+            </th>
+            <th width="10%">
+                <div class="fields thSection">
+                    <span> DOB </span>
+                </div>
+            </th>
+            <th width="20%">
+                <div class="fields thSection">
+                    <span>Comments</span>
+                </div>
+            </th>
+            <th width="10%">
+                <div class="fields thSection">
+                    Actions
+                </div>
+            </th>
+        </tr>
+        <tr id="searchTableRows" class="searchRows" th:each="current,iter: ${dataList}">
+            <td th:text="${current.memberId}">${current.memberId}</td>
+     		<td th:text="${current.firstName}">${current.firstName}</td>
+     		<td th:text="${current.dateOfBirth}">${current.dateOfBirth}</td>
+     		<td th:text="${current.comments}">${current.memberDesc}</td>
+            <td>
+                <input type="hidden" th:value="${current.memberId + '|' + current.firstName + '|' + current.dateOfBirth}" th:id="${'accountIdentifier' + iter.count}">
+                <button id="button1"  class="ellipseBtn editButtonSplit"><img th:src="@{/images/editButtonImage.png}"
+                src="../static/images/editButtonImage.png"></button>
+
+                <button style="display:none" class="editButtonSplit deleteButtonInTable hide"  onClick="deleteButton()" th:onclick="|deleteButton(${iter.count})|">
+                    DELETE
+                </button>
+            </td>
+        </tr>
+    </table>
+    <ul th:replace="fragments/pagination :: pagination"></ul>
+</div>
+
+<div class="modalBox" id="deleteButtonVerification">
+    <div class="modal-content-Box">
+        <form th:action="@{sensitiveaccounts/delete}" action='/sensitiveaccounts/delete' method='post' class="form-container">
+        <h1 class="formHeader">Delete</h1>
+            <div class="formWrapper">
+                <div class="summaryInfo">
+                    <div class="summaryData">
+                        <div class="nameLine">
+                            <p class="question">Are you sure you want to delete this member?</p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="deleteIDNumber" id="deleteIDNumber">
+                <div class="deleteButtons" style="text-align: center">
+                    <button type="reset" class="formBtn cancel" onclick="closePromptButton()" th:onclick="|closePromptButton()|">CANCEL</button>
+                    <button type="submit" class="formBtn">DELETE</button>
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modalBox" id="addNewButton">
+    <div class="modal-content-Box">
+        <form th:action="@{/sensitiveaccounts/add}" action='/sensitiveaccounts/add' method='post' class="form-container">
+            <h1 class="formHeader">ADD NEW SENSITIVE ACCOUNT</h1>
+            <div class="formWrapper">
+                <p class="formTitle">Enter New Account Information</p>
+                <table align="center">
+                    <tbody>
+                    <tr>
+                        <td class="fields">Member ID(12 digit UMI):</td>
+                        <td>
+                            <input type="text" name="memberId" maxlength="12" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fields">First Name:</td>
+                        <td>
+                            <input type="text" name="firstName" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fields">Date of Birth:</td>
+                        <td>
+                            <input type="text" name="dateOfBirth" class="hasDatepicker" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fields">Comments:</td>
+                        <td>
+                            <textarea rows="2" cols="21" name="comments" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fields">(All fields are required)</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="deleteButtons" style="text-align: center">
+                    <button type="submit" class="formBtn">ADD</button>
+                    <button type="reset" class="formBtn cancel" onclick="cancelDeleteButton()" th:onclick="|cancelDeleteButton()|">CANCEL</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
