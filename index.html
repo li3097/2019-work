@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Member Admin Console</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css" th:href="@{/css/reset.css}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            th:src="@{//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            th:src="@{//code.jquery.com/ui/1.12.1/jquery-ui.min.js}"></script>
+    <script src="../static/scripts/cachome.js"
+            th:src="@{/scripts/cachome.js}"></script>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: nav-header(headTitle= 'Consumer Admin Console', showLinks='true')"></div>
+<div th:replace="fragments/header :: main-description(subTitle='Member Portal Admin Console', mainDescription='')"></div>
+
+<div class="buttonsContainer">
+    <div id="memberUpdateBtn" class="btn" onclick="showMemberMenu()">
+        <div>
+            <img th:src="@{/images/MemberServiceIcon.png}" src="/../static/images/MemberServiceIcon.png">
+        </div>
+        MEMBER UPDATE
+    </div>
+    <div id="packageAssignmentBtn" class="btn" onclick="showPackageMenu()">
+        <div>
+            <img th:src="@{/images/PackageIconPlaceHolder.png}" src="/../static/images/PackageIconPlaceHolder.png">
+        </div>
+       PACKAGE ASSIGNMENT
+    </div>
+    <div id="toolsBtn" class="btn" onclick="showToolsMenu()">
+        <div>
+            <img class="icons" th:src="@{/images/ExternalLinksIcon.png}" src="/../static/images/ExternalLinksIcon.png">
+        </div>
+        TOOLS
+    </div>
+</div>
+
+<div class="triangleBackground" style="display: none"></div>
+
+<div id="memberUpdateClick" class="menuContainer" style="display: none">
+    <div id="sensitiveMemberUpdateMenu" class="memberUpdateBox">
+        <div class="searchMembers">
+            <h3>SEARCH MEMBERS</h3>
+            <hr>
+            <p> Search for members to be able to view the member's portal account information,
+                designate the account as a sensitive account, reset the account's Terms and Conditions,
+                and sync account information across all subsidiary systems.</p>
+            <div>
+                <a th:href="@{sensitiveaccounts}"><button class="memberSearchBtn">SEARCH</button></a>
+            </div>
+        </div>
+        <div class="sensitiveClaims">
+            <h3>SENSITIVE CLAIMS</h3>
+            <hr>
+            <p>Edit and create restrictions regarding the visibility of claims on members' accounts.</p>
+            <div>
+                <a th:href="@{sensitiveclaims}"><button class="memberSearchBtn">VIEW CLAIMS</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="memberUpdateMenu" class="memberUpdateBox">
+        <div class="searchMembers">
+            <h3>NAME CHANGES</h3>
+            <hr>
+            <p>Update member names to be consistent across all instances where this member appears</p>
+            <div>
+                <a th:href="@{namechanges}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+        <div class="sensitiveClaims">
+         <h3>TERMS AND CONDITIONS</h3>
+            <hr>
+            <p>Search and update any members terms and conditions flag status or reset it.</p>
+            <div>
+                <a th:href="@{termsandconditions/show}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="packageTabClick" class="menuContainer" style="display: none">
+    <div id="assignmentTabMenu" class="memberUpdateBox">
+        <div class="searchMembers">
+            <h3>PACKAGE ASSIGNMENT</h3>
+            <hr>
+            <p>Search for packages based on filters in order to view or edit packages as well as
+            add or delete existing packages.</p>
+            <div>
+                <a th:href="@{packageassignment}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+        <div class="sensitiveClaims">
+            <h3>WELLNESS PACKAGE ASSIGNMENT</h3>
+            <hr>
+            <p>Search for wellnesss packages based on filters in order to view or edit packages as well as
+                add or delete existing packages.</p>
+            <div>
+                <a th:href="@{wellnesspackageassignment}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+    </div>
+    <div id="pkgAssignmentTabMenu" class="memberUpdateBox">
+        <div class="searchMembers">
+            <h3>CARE COST ESTIMATOR</h3>
+            <hr>
+            <p> View, edit, add, and delete accounts with Care Cost Estimator. </p>
+            <div>
+                <a th:href="@{spendingaccounts/setvendor/CCE}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+        <div class="sensitiveClaims">
+            <h3>ALEGEUS</h3>
+            <hr>
+            <p>View, edit, add, and delete accounts with Alegeus. </p>
+            <div>
+                <a th:href="@{spendingaccounts/setvendor/ALEGEUS}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+    </div>
+    <div id="saAssignmentTabMenu" class="memberUpdateBox">
+        <div class="searchMembers" id="sensitiveClaims">
+            <h3>SPENDING ACCOUNT BLACKOUT</h3>
+            <hr>
+            <p> View, edit, add, and delete accounts with Spending Account Blackout. </p>
+            <div>
+                <a th:href="@{spendingaccounts/setvendor/SABLACKOUT}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="toolsTabClick" class="menuContainer" style="display: none">
+    <div id="toolsTabMenu" class="memberUpdateBox">
+        <div class="searchMembers">
+            <h3>RESOURCE CENTER</h3>
+            <hr>
+            <p>View documents and other information about IBX and AH </p>
+            <div>
+                <button class="memberSearchBtn" id="openRcLinks" onclick="openRcLinks()" th:onclick="|openRcLinks()|">VIEW LINKS</button>
+            </div>
+            <div class="buttonLink" id="rcLinks" style="display:none;">
+                <ul>
+                    <li><a href="http://spapps.ibx.com/mobile/NextGen/IBX%20Resource%20Center">IBX</a></li>
+                    <li><a href="http://spapps.ibx.com/mobile/NextGen/AHNJ%20Resource%20Center">AmeriHealth</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="searchMembers">
+            <h3>MVP</h3>
+            <hr>
+            <p> Search for members and mimic thier portal experience on the AHA, IA, AH, IBX, and BlueLink. </p>
+            <div>
+                <button class="memberSearchBtn" id="openLinks" onclick="openLinks()" th:onclick="|openLinks()|">VIEW LINKS</button>
+            </div>
+            <div class="buttonLink" id="mvpLinks" style="display:none;">
+                <ul>
+                    <li><a href="https://portal.myibxtpabenefits.com/mvp2/1901/mvp/CustomerServiceSearch">Independence Administrators</a></li>
+                    <li><a href="https://portal.myahabenefits.com/mvp2/1901/mvp/CustomerServiceSearch"> AmeriHealth Administrators</a></li>
+                    <li><a href="https://ibxpress.qa.ibx.com/mvp2qa7/1901/mvp/CustomerServiceSearch">IBX</a></li>
+                    <li><a href="https://amerihealthexpress.qa.amerihealth.com/mvp2qa7/1901/mvp/CustomerServiceSearch">AmeriHealth</a></li>
+                    <li><a href="https://portal.myqccbluelink.com/mvp2/1901/mvp/CustomerServiceSearch">BlueLink</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="toolsResourceTabMenu" class="memberUpdateBox">
+        <div class="searchMembers">
+            <h3>MESSAGE CAMPAIGN CONSOLE (IBC)</h3>
+            <hr>
+            <p> Create messaging campaigns with alerts and banners for for IBC, AHPA, and AHNJ </p>
+            <div>
+                <a th:href="@{https://ecom.qa.ibx.com/MNC/ibx}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+        <div class="searchMembers">
+            <h3>MESSAGE CAMPAIGN CONSOLE (AHA)</h3>
+            <hr>
+            <p>Create messaging campaigns with alerts and banners for AHA, IA, BlueLink</p>
+            <div>
+                <a th:href="@{https://ecom.qa.ibx.com/MNC/aha} "><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+    </div>
+    <div id="vaToolsResourceTabMenu" class="memberUpdateBox">
+        <div class="searchMembers" id="vaTool">
+            <h3>VA TOOL</h3>
+            <hr>
+            <p>Modify questions for Elastic Search</p>
+            <div>
+                <a th:href="@{virtualassistant}"><button class="memberSearchBtn">VIEW</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
