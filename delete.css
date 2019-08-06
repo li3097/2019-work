@@ -1,0 +1,218 @@
+/* VIEW CLAIMS AND DELETE MEMBERS PAGE SEARCH
+.searchBar {
+     border-radius: 3px;
+}
+*/
+/* VIEW CLAIMS AND DELETE MEMBERS PAGE SEARCH */
+/*.searchBar, .deleteMemberSearchBar {
+     display: inline-flex;
+     background: #FFFFFF;
+     /* Primary */
+  /*   border: 0.25px solid #2C3D55;
+     box-sizing: border-box;
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
+     margin: 15px;
+ }
+*/
+/*Delete members page*/
+ .deleteMemberSearchBar {
+     margin: 35px 0px 35px 35px;
+     width: 35%;
+     padding: 7px;
+
+ }
+
+
+
+/* DELETE MEMBERS PAGE */
+ .deleteMemberMagnifyingGlass {
+     background: #FFFFFF;
+     border: 1px solid;
+     margin: 35px 5px 35px 0px;
+     padding:  5px;
+ }
+
+/* DELETE MEMBERS PAGE */
+ .deleteMemberMagnifyingGlass:hover {
+     cursor: pointer;
+ }
+/*END DELETE PAGE*/
+
+/* DELETE MEMBERS PAGE SEARCH BAR */
+/*.searchBarContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+*/
+#deleteAccountsBtn {
+    margin: 0px 200px 10px 10px;
+    float: right;
+}
+
+/* END DELETE MEMBERS PAGE SEARCH BAR */
+
+/* ALEGEUS AND DELETE MEMBERS PAGES BUTTON */
+.addButton, .deleteMembersAddButton {
+	width: 133px;
+	height: 36px;
+	/* Secondary */
+	background: #E03633;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	color: #FFFFFF;
+}
+
+/* DELETE MEMBERS MODAL*/
+.deleteMemberFormWrapper table {
+    background-color: #D3D3D3;
+    width: 95%;
+    margin: 20px;
+}
+
+.deleteMemberFormWrapper table td {
+    margin: 20px 5px 20px 5px;
+    padding: 5px 0px 5px 5px;
+    width: 105px;
+}
+
+.deleteModalTableTitles {
+    margin: 10px 10px 10px 120px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.deleteModalTableTitles .title1, .title2, .title3 {
+    margin: 10px 40px 0px 30px;
+}
+/* END DELETE MEMBERS MODAL*/
+
+/* DELETE MEMBERS MAIN SCREEN */
+.deleteTable {
+    overflow: auto;
+}
+
+
+
+/* DELETE MEMBERS MAIN SCREEN */
+.formData, .nameLine, .contactLine{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    padding: 5px;
+    max-width: 600px;
+}
+
+.formData {
+    margin: 10px 10px 10px 260px;
+}
+
+.contactLine {
+    margin: 0px 10px 0px 10px;
+}
+
+.nameLine dependent {
+    margin:  10px 10px 10px 0px;
+}
+
+.nameLine company {
+    margin: 10px 0px 10px 10px;
+}
+
+/* DELETE MEMBERS MAIN SCREEN */
+.formData p{
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+/* DELETE MEMBERS MAIN SCREEN */
+.IBC {
+    margin: 20px;
+    padding: 5px;
+}
+
+/* DELETE MEMBERS MAIN SCREEN */
+.IBC p {
+    padding: 5px 5px 0px 5px;
+}
+
+/* DELETE MEMBERS MAIN SCREEN */
+.IBC p hgmk {
+    margin: 2px 2px 10px 2px;
+}
+
+/* END DELETE MEMBERS MODAL */
+
+/*DELETE MEMBERS MODAL STUFF */
+.deleteMemberForm-container {
+	background-color: #FEFDFC;
+	margin: 5% auto;
+	width: 98%;
+	max-width: 800px;
+}
+
+/*index page*/
+ .deleteMemberFormBtn {
+     background: #28536B;
+     color: #FFFFFF;
+     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+     border-radius: 3px;
+     width: 75px;
+     padding: 5px;
+     margin: 5px;
+  }
+
+  .headerLine {
+  	display: flex;
+  	margin: 5px;
+  	padding: 5px;
+  }
+
+  .headerLine h1, h3 {
+  	margin: 5px;
+  	padding: 5px;
+  }
+
+  /* Modal Content/Box */
+.modal-content-Box {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  max-width: 650px;
+}
+
+#deleteVerification {
+    max-height: 900px;
+}
+
+/*2nd modal box*/
+
+.summaryData p {
+	margin: 5px;
+	padding: 5px;
+}
+
+.summaryData p company, .summaryData p dependent{
+	display: flex;
+	flex-direction: row;
+    flex-wrap: nowrap;
+	margin: 5px;
+	padding: 5px;
+}
+
+.summaryData h4 {
+	margin: 5px 5px 200px 5px;
+	padding: 5px;
+
+}
+
+.deleteButtons {
+	margin: 5px;
+	padding: 5px;
+}
