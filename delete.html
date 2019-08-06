@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var ctxroot = /*[[@{/}]]*/ '/';
+        var ctxrootrest = /*[[@{/rest/}]]*/ '/';
+        /*]]>*/
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/deletemembers.css" th:href="@{/css/deletemembers.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            th:src="@{//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            th:src="@{//code.jquery.com/ui/1.12.1/jquery-ui.min.js}"></script>
+    <script src="../static/scripts/spendingaccounts.js"
+            th:src="@{/scripts/spendingaccounts.js}"></script>
+    <script src="../static/scripts/buttonSplit.js"
+            th:src="@{/scripts/buttonSplit.js}"></script>
+    <script src="../static/scripts/deletemembers.js"  th:src="@{/scripts/spendingaccounts.js}"></script>
+
+    <title>Delete Members</title>
+</head>
+<body>
+
+<div class="containerHead">
+    <h3><a href="index.html"><span>MEMBER ADMIN CONSOLE </span></a>
+    </h3>
+    <ul class="memberLinks">
+        <li><h4>MEMBER UPDATE</h4></li>
+        <li><h4>PACKAGE ASSIGNMENT</h4></li>
+        <li><h4>TOOLS</h4></li>
+    </ul>
+</div>
+
+<div class="mainDescription">
+    <h3>DELETE MEMBERS</h3>
+    <svg height="25" width="1000">
+        <line x1="0" y1="20" x2="1900" y2="20" style="stroke:rgb(211,211,211);stroke-width:2" />
+    </svg>
+    <h5>Delete duplicate members that are no longer needed</h5>
+</div>
+
+
+<div class="deleteMembersSearchBarContent">
+    <input class="deleteMemberSearchBar" id="searchText" type="text" placeholder="SEARCH by Member ID or Username">
+    <button class="deleteMemberMagnifyingGlass" onClick="searchBy()"><img src="images/MagnifyingGlass.png"></button>
+</div>
+
+<div class="deleteBox">
+    <div class="modalBox" id="deleteMemberForm">
+        <div class="modal-content-Box">
+            <form action="" class="deleteMemberForm-container">
+                <h1 class="formHeader">DELETE ACCOUNT</h1>
+                <div class="deleteMemberFormWrapper">
+                    <p class="formTitle">Are you sure you want to delete this account?</p>
+                    <input type="hidden" name="deleteIDNumber" id="deleteIDNumber">
+                    <div class="deleteModalTableTitles">
+                        <p class="title1"><u>IBC LDAP </u></p>
+                        <p class="title2"><u>IBC MAD </u></p>
+                        <p class="title3"><u>HMK BV/LDAP </u></p>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Member ID</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>User ID</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>First Name</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Middle Initial</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>DOB(mm/dd/yyyy)</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Brand</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>FMID</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                    </table>
+                    <div class="deleteButtons" style="text-align: center">
+                        <button type="reset" class="cancelFormBtn"
+                                onclick="closePromptForm()">CANCEL</button>
+                        <button id="deleteBtn" type="submit" class="deleteMemberFormBtn" onClick="openRemoveForm();">REMOVE</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modalBox" id="deleteVerification">
+    <div class="modal-content-Box">
+        <form action="" class="form-container3">
+            <h1 class="formHeader">DELETE ACCOUNT</h1>
+            <div class="formWrapper3">
+                <h1 class="formTitle">"Name"</h1>
+                   <!--  <input type="hidden" name="deleteIDNumber" id="deleteIDNumber"> -->
+                <div class="summaryInfo">
+                    <div class="summaryData">
+                        <div class="nameLine">
+                        <p class="company">"Company"|</p>
+                        <p class="dependent">Dependent of "name"</p>
+                        </div>
+                        <p> UMI: {TODO: have UMI id come in here}</p>
+                        <p>Coverage Dates:</p>
+                        <div class="contactLine">
+                        <p class="email"><i fa-fa-icon?>"email"</i></p>
+                        <p class="phone"><i fa-fa-icon?> "phone number"</p>
+                        </div>
+                        <p>" TODO: SOMETHING THAT I DONT REMEMBER"</p>
+                        <h4>Duplicate Accounts</h4>
+                    </div>
+                </div>
+                <div class="deleteButtons" style="text-align: center">
+                    <button type="reset" class="closeFormBtn" onclick="closePromptForm()">CLOSE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="headerLine">
+    <h1>Results</h1>
+    <h3>Sort: Relevance <i class="fa fa-angle-down"></i></h3>
+    <h3>Brand: All <i class="fa fa-angle-down"></i></h3>
+
+</div>
+
+<!--  May need to put back in later. Unsure for now.
+<div id="tableContainer" class="tableContainer">
+    <table class="searchTable">
+        <tr class="searchTableBorder">
+            <th><div class="fields thSection">
+            <span> Member ID </span>
+                --<div class="triangles">
+                <<img src="images/Polygon.png"> <br /> <img
+                    src="images/Polygon2.png">
+            </div>--
+            </div></th>
+            <th><div class="fields thSection">
+                <span> Last Name </span>
+                --<div class="triangles">
+                <<img src="images/Polygon.png"> <br /> <img
+                    src="images/Polygon2.png">
+            </div>--
+            </div></th>
+            <th><div class="fields thSection">
+            <span> First Name </span>
+            --<div class="triangles">
+                <img src="images/Polygon.png"> <br /> <img
+                    src="images/Polygon2.png">
+            </div>--
+            </div></th>
+            <th>
+                <div class="fields thSection">
+                    <span>  DOB </span>
+                    --<div class="fields thSection" align="center">
+                </div>--
+                    --<div class="triangles">
+                    <img src="images/Polygon.png"> <br /> <img
+                        src="images/Polygon2.png">
+                </div>--
+                </div>
+            </th>
+            <th>
+                <div class="fields thSection">
+                    <span> Brand </span>
+                    --<div class="triangles">
+                    <img src="images/Polygon.png"> <br /> <img
+                        src="images/Polygon2.png">
+                </div>--
+                </div>
+            </th>
+            <th>
+                <div class="fields thSection">
+                    <span> Username </span>
+                    --<div class="triangles">
+                    <img src="images/Polygon.png"> <br /> <img
+                        src="images/Polygon2.png">
+                </div>--
+                </div>
+            </th>
+            <th>
+                <div class="fields thSection">
+                    <span> Relationship </span>
+                    --<div class="triangles">
+                    <img src="images/Polygon.png"> <br /> <img
+                        src="images/Polygon2.png">
+                </div>--
+                </div></th>
+            <th><div class="fields thSection">
+                <span> T&C </span>
+                --<div class="triangles">
+                <img src="images/Polygon.png"> <br /> <img
+                    src="images/Polygon2.png">
+            </div>--
+            </div></th>
+            <th><div class="fields thSection">
+                <span> System Sync </span>
+                --<div class="triangles">
+                <img src="images/Polygon.png"> <br /> <img
+                    src="images/Polygon2.png">
+            </div>--
+            </div></th>
+            <th><div class="fields thSection">
+                <span> Sensitive </span>
+                --<div class="triangles">
+                <img src="images/Polygon.png"> <br /> <img
+                    src="images/Polygon2.png">
+            </div>--
+            </div></th>
+        </tr>
+        <c:forEach var="ques" items="${questions}">
+            <tr id="searchTableRows"class="searchRows">
+                -- iterate over the collection using forEach loop --
+                -- create an html table row --
+                -- create cells of row --
+                <td>${ques.id}</td>
+                <td>${ques.question}</td>
+                <td>
+                    <div style="height: 50px; overflow: hidden; line-height: 16px; padding-top: 10px">
+                        ${ques.keyword}
+                    </div>
+                </td>
+                <td>
+                    <div class="enabledFieldBox">
+                        ${ques.active}
+                    </div>
+                </td>
+                <td>
+                    ${ques.creUsrId}
+                </td>
+                <td>
+                    ${ques.formattedDate}
+                </td>
+                <td>
+                    hi
+                </td>
+                <td>
+                    hi
+                </td>
+                <td>
+                    hi
+                </td>
+                <td>
+                    hi
+                </td>
+                <td>
+                    <div>
+                        <button id="button1"  class="ellipseBtn editButtonSplit"><img src="images/editButtonImage.PNG"></button>
+                        <button style="display:none" class="editButtonSplit deleteButtonInTable hide"
+                                id="button2" onClick="openPromptForm(${ques.id})"><c:choose>
+                            <c:when test="${ques.active=='N'}">
+                                DISABLE
+                            </c:when>
+                            <c:otherwise>
+                                ENABLE
+                            </c:otherwise>
+                        </c:choose>
+                        </button>
+                        <button style="display:none" class="editButtonSplit editButtonInTable hide"
+                                id="button3" onClick="openEditForm(${ques.id})" >EDIT
+                        </button>
+                    </div>
+                </td>
+                -- close row --
+            </tr>
+            -- close the loop --
+        </c:forEach>
+        -- close table --
+    </table>
+</div>
+-->
+
+<div class="deleteTable">
+    <div class="formData">
+        <p>First Name:</p>
+        <p>Last Name:</p>
+        <p>DOB(mm/dd/yyyy):</p>
+        <p>IBC FMID:</p>
+        <p>HGMK FMID:</p>
+    </div>
+    <div class="IBC">
+        <p><input type="checkbox" name="ldap" value="ldap"> Member 1/User 1</p><br>
+        <p><input type="checkbox" name="mad" value="mad"> Member 1/User 2</p><br>
+        <p class="hgmk"><input type="checkbox" name="hgmk" value="hgmk" checked> Member 2/User 1</p><br>
+        <p><input type="checkbox" name="mad" value="mad"> Member 2/User 2</p><br>
+
+    </div>
+    <div class="Display">
+        <!-- <p><strong>Display All: </strong></p> -->
+        <button class="deleteMembersAddButton" id="deleteAccountsBtn" onclick="openDeleteForm()"> Delete Accounts</button>
+    </div>
+</div>
+
+</body>
+</html>
